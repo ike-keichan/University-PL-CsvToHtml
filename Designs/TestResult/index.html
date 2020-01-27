@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プログラミング言語「CSV2HTML」">
+<meta name="author" content="AOKI Atsushi, IKEDA Keisuke, ENOMOTO Yoshiki, SHIZUNO Tomoya, TSUJI Karin and FUKUI Kosuke">
+<link rev="made" href="mailto:秘密ダヨ❤️">
+<link rel="index" href="index-j.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プログラミング言語「CSV2HTML」テスト結果報告書</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a>
+  <li><a href="../Requirement/index.html">要求仕様書</a>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a>
+  <li><a href="../BasicDesign/index.html">基本設計書</a>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a>
+  <li><a href="../TestSpecification/index.html">テスト仕様書</a>
+  <li><a href="../TestResult/index.html" class="current">テスト結果</a>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a>
+  <li><a href="../Program/index.html">プログラム</a>
+  <li><a href="../Manual/index.html">マニュアル</a>
+</ul>
+</div>
+<hr>
+<h2>プログラミング言語「CSV2HTML」テスト結果報告書</h2>
+<div class="belt">
+<h3><a name="dousakankyo">動作環境（OS）</a></h3>
+</div>
+<div class="belt-blue">
+<h3><a name="MacOS X">MacOS X</a></h3>
+</div>
+<div class="belt-yellow" id="M2016070801">
+<h4><a href="http://www.cc.kyoto-su.ac.jp/~atsushi/Computers/pdfs/MacBook_Retina_12-inch_Early_2016.pdf" title="M2016070801">MacBook Retina 12" [Early 2016]</a> (<a href="http://www.apple.com/jp/">Apple</a>)</h4>
+</div>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="https://support.apple.com/kb/SP741?viewlocale=ja_JP&amp;locale=ja_JP"><img class="borderless" src="images/TR01.png" width="100" height="100" alt="MacBook_Retina_12-inch_Early_2016"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core m5 1.2GHz dual-core (Turbo Boost up to 2.7GHz)</li>
+        <li>Memory: 8GB</li>
+        <li>512GB PCIe-based onboard flash storage</li>
+        <li>Intel HD Graphics 515 (1536MB)</li>
+        <li>802.11ac Wi-Fi wireless networking (IEEE 802.11a/b/g/n compatible) &amp; Bluetooth 4.0</li>
+        <li>USB-C port</li>
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt-yellow" id="M2018120507">
+<h4><a href="http://www.cc.kyoto-su.ac.jp/~atsushi/Computers/pdfs/MacBook_Retina_12-inch_2017.pdf" title="M2018120507">MacBook Retina 12" [2017]</a> (<a href="http://www.apple.com/jp/">Apple</a>)</h4>
+</div>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="https://support.apple.com/kb/SP757?viewlocale=ja_JP&amp;locale=ja_JP"><img class="borderless" src="images/TR02.png" width="100" height="100" alt="MacBook_Retina_12-inch_2017_silver"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core i5 1.3GHz (Turbo Boost up to 3.2GHz)</li>
+        <li>Memory: 8GB 1,866MHz LPDDR3</li>
+        <li>512GB PCIe-based onboard flash storage</li>
+        <li>Intel HD Graphics 615</li>
+        <li>802.11ac Wi-Fi wireless networking (IEEE 802.11a/b/g/n compatible) &amp; Bluetooth 4.2</li>
+        <li>USB-C port</li>
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt-yellow" id="M2014071002">
+<h4><a href="http://www.cc.kyoto-su.ac.jp/~atsushi/Computers/pdfs/Office-Mac_mini_Server_Late2012.pdf" title="M2014071002">Mac mini</a> (<a href="http://www.apple.com/jp/">Apple</a>)</h4>
+</div>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="http://www.cc.kyoto-su.ac.jp/~atsushi/Computers/pdfs/Office-Mac_mini_Server_Late2012.pdf"><img class="borderless" src="images/TR03.png" width="100" height="100" alt="Office-MacMiniServer2012"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core i7 2.6GHz</li>
+        <li>Memory: 8GB</li>
+        <li>Internal Solid State Drive: 500GB (SSD 250GB × 2)</li>
+        <li>Intel HD Graphics 4000 (1024MB)</li>
+        <li>Gigabit Ethernet</li>
+        <li>Wireless LAN AirMac Extreme &amp; Bluetooth</li>
+        <li>FlexScan EV2736W-FSGY</li>
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<div class="right-small">Copyright 2019 Project aokiken extends AOK, Updated: 2019/12/24 (Created: 2009/11/11)</div>
+</body>
+</html>
